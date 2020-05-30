@@ -180,7 +180,9 @@ class PhoneNumberPicker extends React.Component {
       updatedCountry.callingCode,
       this.state.phoneNo
     );
-    this.textInputPhoneNumber.focus();
+    if (this.textInputPhoneNumber) {
+      this.textInputPhoneNumber.focus();
+    }
   }
 
   CallingCodeChanged(updatedCallingCode) {
@@ -194,7 +196,7 @@ class PhoneNumberPicker extends React.Component {
       countryFromCallingCode.callingCode,
       this.state.phoneNo
     );
-    if (countryFromCallingCode.cca2.length) {
+    if (countryFromCallingCode.cca2.length && this.textInputPhoneNumber) {
       this.textInputPhoneNumber.focus();
     }
   }
@@ -223,7 +225,9 @@ class PhoneNumberPicker extends React.Component {
 
   componentDidMount() {
     setTimeout(() => {
-      this.textInputPhoneNumber.focus();
+      if (this.textInputPhoneNumber) {
+        this.textInputPhoneNumber.focus();
+      }
     }, 100);
   }
 
